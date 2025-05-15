@@ -2,14 +2,14 @@ from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import base64
 
 # Load environment variables
-load_dotenv()
+
 
 # Clarifai configuration
-PAT = os.getenv('CLARIFAI_API_KEY')
+PAT = c6f95bc88abb4bfcbcf8fbe44baf0d27
 # Use Clarifai's official general model
 USER_ID = 'clarifai'
 APP_ID = 'main'
