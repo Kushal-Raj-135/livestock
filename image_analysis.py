@@ -1,16 +1,12 @@
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
-import os
-#from dotenv import load_dotenv
 import base64
 
-# Load environment variables
-
+# Direct API key configuration
+CLARIFAI_API_KEY = "c6f95bc88abb4bfcbcf8fbe44baf0d27"
 
 # Clarifai configuration
-PAT = c6f95bc88abb4bfcbcf8fbe44baf0d27
-# Use Clarifai's official general model
 USER_ID = 'clarifai'
 APP_ID = 'main'
 # Using the general model
@@ -66,10 +62,6 @@ def analyze_animal_image(image_base64, language='english'):
         language: Language for the response (default: 'english')
     """
     try:
-        # Get API key from environment
-        if not PAT:
-            raise ValueError("CLARIFAI_API_KEY not found in environment variables")
-
         # Validate language
         if language.lower() not in SUPPORTED_LANGUAGES:
             raise ValueError(f"Unsupported language: {language}. Supported languages: {', '.join(SUPPORTED_LANGUAGES.keys())}")
@@ -85,7 +77,7 @@ def analyze_animal_image(image_base64, language='english'):
         stub = service_pb2_grpc.V2Stub(channel)
 
         # Create metadata for authentication
-        metadata = (('authorization', f'Key {PAT}'),)
+        metadata = (('authorization', f'Key {CLARIFAI_API_KEY}'),)
 
         # Prepare the request with language specification
         post_model_outputs_request = service_pb2.PostModelOutputsRequest(
