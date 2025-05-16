@@ -12,8 +12,8 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 import re
 
 # API Keys
-GROQ_API_KEY = "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"
-CLARIFAI_PAT = "c6f95bc88abb4bfcbcf8fbe44baf0d27"
+GROQ_API_KEY = ""
+CLARIFAI_PAT = ""
 
 # Initialize clients
 groq_client = ChatGroq(
